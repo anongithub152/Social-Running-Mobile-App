@@ -1,0 +1,21 @@
+
+<ion-view view-title="Home" ng-init="hc.initHome()">
+	<ion-content class="text-center has-header">
+		<h1>Scheduled Runs</h1>
+    <ion-list>
+      <div>
+        <ion-item class="item-stable"
+                  ng-click="hc.toggleList = !hc.toggleList"
+                  ng-class="{active: hc.toggleList}">
+          <i class="icon" ng-class="hc.toggleList ? 'ion-minus' : 'ion-plus'"></i>
+          &nbsp;
+          Scheduled Runs
+        </ion-item>
+        <ion-item ng-if="hc.runListArr" class="item-accordion" ng-repeat="run in hc.runListArr" ng-click="hc.fnGoToStart(run)" ng-show="hc.toggleList">
+          {{run.dispDate | date: 'yyyy-MM-dd HH:mm'}}
+        </ion-item>
+      </div>
+    </ion-list>
+    <a  ui-sref="app.runninglog" style="margin-top:0px !Important;"   class="button button-calm  button-block">Running Log</a>
+	</ion-content>
+</ion-view>
